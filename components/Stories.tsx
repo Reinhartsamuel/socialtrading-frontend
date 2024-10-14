@@ -8,30 +8,31 @@ const Stories = async () => {
 
   if (!currentUserId) return null;
 
-  const stories = await prisma.story.findMany({
-    where: {
-      expiresAt: {
-        gt: new Date(),
-      },
-      OR: [
-        {
-          user: {
-            followers: {
-              some: {
-                followerId: currentUserId,
-              },
-            },
-          },
-        },
-        {
-          userId: currentUserId,
-        },
-      ],
-    },
-    include: {
-      user: true,
-    },
-  });
+  // const stories = await prisma.story.findMany({
+  //   where: {
+  //     expiresAt: {
+  //       gt: new Date(),
+  //     },
+  //     OR: [
+  //       {
+  //         user: {
+  //           followers: {
+  //             some: {
+  //               followerId: currentUserId,
+  //             },
+  //           },
+  //         },
+  //       },
+  //       {
+  //         userId: currentUserId,
+  //       },
+  //     ],
+  //   },
+  //   include: {
+  //     user: true,
+  //   },
+  // });
+  const stories = []
   return (
     <div className="p-4 bg-white rounded-lg shadow-md overflow-scroll text-xs scrollbar-hide">
       <div className="flex gap-8 w-max">

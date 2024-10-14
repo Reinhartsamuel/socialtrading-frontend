@@ -9,14 +9,15 @@ const FriendRequests = async () => {
 
   if (!userId) return null;
 
-  const requests = await prisma.followRequest.findMany({
-    where: {
-      receiverId: userId,
-    },
-    include: {
-      sender: true,
-    },
-  });
+  const requests =[];
+  //  await prisma.followRequest.findMany({
+  //   where: {
+  //     receiverId: userId,
+  //   },
+  //   include: {
+  //     sender: true,
+  //   },
+  // });
 
   if (requests.length === 0) return null;
   return (

@@ -8,18 +8,29 @@ const ProfileCard = async () => {
 
   if (!userId) return null;
 
-  const user = await prisma.user.findFirst({
-    where: {
-      id: userId,
-    },
-    include: {
-      _count: {
-        select: {
-          followers: true,
-        },
-      },
-    },
-  });
+  // const user = await prisma.user.findFirst({
+  //   where: {
+  //     id: userId,
+  //   },
+  //   include: {
+  //     _count: {
+  //       select: {
+  //         followers: true,
+  //       },
+  //     },
+  //   },
+  // });
+  const user = {
+    cover : 'https://picsum.photos/200',
+    avatar : 'https://picsum.photos/200',
+    username : 'johnDoe',
+    name : 'John',
+    surname : 'Doe',
+    _count: {
+      followers:12,
+      
+    }
+  }
 
   if (!user) return null;
 
